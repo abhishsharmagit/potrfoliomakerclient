@@ -1,0 +1,15 @@
+.background-image {
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url('/github.jpg');
+  }
+
+  .background-rocket {
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url('/rocket.jpg');
+  }
