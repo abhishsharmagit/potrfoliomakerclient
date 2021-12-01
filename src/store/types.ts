@@ -3,6 +3,11 @@ export type UsersState = {
   portfolioUrl: "";
   loading: EntityLoadingState;
 };
+export type PortfolioState = {
+  portfolio: [];
+  loading: EntityLoadingState;
+  error?: string;
+};
 export enum EntityLoadingState {
   IDLE = "idle",
   PENDING = "pending",

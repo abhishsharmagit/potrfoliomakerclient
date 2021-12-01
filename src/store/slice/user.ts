@@ -22,10 +22,6 @@ const usersSlice = createSlice({
       state.loading = EntityLoadingState.SUCCEEDED;
       state.portfolioUrl = payload;
     },
-    // checkRepoExist: (state, { payload }: PayloadAction<any>) => {
-    //   state.message = payload.message;
-    //   //state.value = payload.value;
-    // },
     clearUserState: () => {
       return initialState;
     },

@@ -1,7 +1,7 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
 
 class MyDocument extends Document {
-  static async getInitialProps(ctx) {
+  static async getInitialProps(ctx:any) {
     const initialProps = await Document.getInitialProps(ctx);
     return { ...initialProps };
   }
@@ -9,7 +9,13 @@ class MyDocument extends Document {
   render() {
     return (
       <Html>
-        <Head />
+        <Head>
+          <script
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3552440748579508"
+            crossOrigin="anonymous"
+          ></script>
+        </Head>
         <body>
           <Main />
           <NextScript />
@@ -20,7 +26,7 @@ class MyDocument extends Document {
           ></script>
 
           <ins
-            class="adsbygoogle"
+            className="adsbygoogle"
             data-ad-client="ca-pub-3552440748579508"
             data-ad-slot="8923990174"
             data-ad-format="auto"

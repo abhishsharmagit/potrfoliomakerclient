@@ -10,7 +10,7 @@ const Home = () => {
   const user = useAppSelector<any>(
     (state) => Object.values(state.user.entities)[0]
   );
-
+console.log(user,'user')
   const router = useRouter();
   const { token } = router.query;
   //@ts-ignore

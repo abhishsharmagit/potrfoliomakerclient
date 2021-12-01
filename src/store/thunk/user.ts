@@ -10,8 +10,7 @@ import { IcreatePortfolioDTO } from "../types";
 export const getMe = (token: string) => async (dispatch: AppDispatch) => {
   try {
     const user = await userService.getMe(token);
-    return user;
-    // dispatch(fetchUserByIdSuccess(user));
+    dispatch(fetchUserByIdSuccess(user));
   } catch (error) {
     //todo : handle this error
   }
