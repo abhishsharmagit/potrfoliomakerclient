@@ -27,6 +27,21 @@ const createPortfolio = async (dto: IcreatePortfolioDTO) => {
   return user.data;
 };
 
+const checkRepoExist = async (repoName: string) => {
+  const token = getToken();
+console.log('service')
+  const config: AxiosRequestConfig = {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    data: { repoName },
+  };
+  const user = await axios(`${process.env.BACKEND_URL}/repoExist`, config);
+  console.log(user,'user')
+  return user.data;
+};
+
 const uploadImage = async (dto?: FormData) => {
   const token = getToken();
   console.log(dto, "dto");
@@ -77,4 +92,5 @@ export default {
   uploadImage,
   uploadResume,
   getToken,
+  checkRepoExist,
 };

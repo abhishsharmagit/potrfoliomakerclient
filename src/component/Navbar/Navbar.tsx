@@ -21,34 +21,39 @@ const Navbar: React.FC<Props> = () => {
           md:py-0
           px-4
           text-lg text-gray-700
-          bg-red-300
+          bg-gray-100
         "
       >
-        <div className="w-full md:flex  md:w-auto items-center justify-items-center mx-auto" id="menu">
+        <div
+          className="w-full md:flex  md:w-auto items-center justify-items-center mx-auto"
+          id="menu"
+        >
           <ul
             className="
-              pt-4
               text-base text-gray-700
               md:flex
               md:justify-between 
               md:pt-0"
           >
-            <li>
-              <a className="md:p-4 py-2 block hover:text-purple-400 text-xl" href="/">
+            <li className="mx-4">
+              <a
+                className="md:px-2 my-2 block hover:border rounded-full hover:bg-blue-500 hover:text-white text-xl"
+                href="/"
+              >
                 Home
               </a>
             </li>
-            <li>
+            <li className="mx-4">
               <a
-                className="md:p-4 py-2 block hover:text-purple-400 text-xl"
+                className="md:px-2 my-2 block hover:border rounded-full hover:bg-blue-500 hover:text-white text-xl"
                 href="/template"
               >
                 Create Portfolio
               </a>
             </li>
-            <li>
+            <li className="mx-4">
               <a
-                className="md:p-4 py-2 block hover:text-purple-400 text-xl text-purple-500"
+                className="md:px-2 cursor-pointer my-2 block hover:border rounded-full hover:bg-blue-500 hover:text-white text-xl text-purple-500"
                 onClick={() => logout()}
               >
                 Log out
