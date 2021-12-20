@@ -10,18 +10,23 @@ class MyDocument extends Document {
   render() {
     return (
       <Html>
-        <Head />
-        <body>
-          <Main />
-          <NextScript />
+        <Head>
           <script
             async
             src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3552440748579508"
             crossOrigin="anonymous"
           ></script>
+        </Head>
+        <body>
+          <Main />
+          <NextScript />
           <ins
             className="adsbygoogle"
-            style={{ display: "inline-block", width: 300, height: 250 }}
+            style={{
+              display: "inline-block",
+              width: "auto",
+              height: "auto",
+            }}
             data-ad-client="ca-pub-3552440748579508"
             data-ad-slot="8923990174"
             data-ad-format="auto"

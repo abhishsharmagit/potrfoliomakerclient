@@ -1,12 +1,15 @@
+import { IPortfolio, IUser } from "../types";
+
 export type UsersState = {
   entities: {};
   portfolioUrl: "";
   loading: EntityLoadingState;
 };
 export type PortfolioState = {
-  portfolio: [];
+  portfolio: IPortfolio[];
   loading: EntityLoadingState;
   error?: string;
+  repoExist: boolean;
 };
 export enum EntityLoadingState {
   IDLE = "idle",

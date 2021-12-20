@@ -6,8 +6,9 @@ import { FORM } from "../types";
 import { EntityLoadingState } from "../store/types";
 import Template1 from "../component/Templates/Template1";
 import Template2 from "../component/Templates/Template2";
-import { checkRepoExist, createPortfolio } from "../store/thunk/user";
+import { createPortfolio } from "../store/thunk/user";
 import Input from "../component/Input";
+import { checkRepoExist } from "../store/thunk/portfolio";
 
 const Form: NextPage = () => {
   const dispatch = useAppDispatch();
@@ -29,8 +30,13 @@ const Form: NextPage = () => {
     imageName: "",
     resumeName: "",
   });
-  const user = useAppSelector<any>((state) => state.user.portfolioUrl);
+  const portfolioUrl: string = useAppSelector(
+    (state) => state.user.portfolioUrl
+  );
   const usersState = useAppSelector<any>((state) => state.user.loading);
+  const repoExist: boolean = useAppSelector(
+    (state) => state.portfolio.repoExist
+  );
   const handleFieldChange = (value: string | boolean | File, key: string) => {
     setFormValue({ ...formValue, [key]: value });
   };
@@ -41,11 +47,15 @@ const Form: NextPage = () => {
   const router = useRouter();
 
   useEffect(() => {
-    const { template } = router.query;
-    //@ts-ignore
+    const template = router.query.template as string;
     handleFieldChange(template, "template");
-    user && Router.push("/result");
-  }, [user]);
+    portfolioUrl && Router.push("/result");
+  }, [portfolioUrl]);
+
+  useEffect(() => {
+    console.log(formValue.portfolio);
+    dispatch(checkRepoExist(formValue.portfolio));
+  }, [formValue.portfolio]);
 
   return (
     <>
@@ -80,18 +90,30 @@ const Form: NextPage = () => {
                     label="First Name"
                     onChange={(value) => handleFieldChange(value, "firstName")}
                   />
-
-                  <Input
-                    required={true}
-                    value={formValue.portfolio}
-                    type="text"
-                    label="Potfolio Name"
-                    name="portfolioName"
-                    placeholder="Your Portfolio Repo Name.."
-                    onChange={(value) => {
-                      handleFieldChange(value, "portfolio");
-                    }}
-                  />
+                  <div className="flex flex-col">
+                    <Input
+                      required={true}
+                      value={formValue.portfolio}
+                      type="text"
+                      label="Potfolio Name"
+                      name="portfolioName"
+                      placeholder="Your Portfolio Repo Name.."
+                      onChange={(value) => {
+                        handleFieldChange(value, "portfolio");
+                      }}
+                    />
+                    {repoExist ? (
+                      <span className="text-red-500">
+                        Portfolio {formValue.portfolio} is already exist! you
+                        can update it
+                      </span>
+                    ) : (
+                      <span className="text-green-500">
+                        {formValue.portfolio &&
+                          `Portfolio name ${formValue.portfolio} is available`}
+                      </span>
+                    )}
+                  </div>
                 </div>
 
                 <label

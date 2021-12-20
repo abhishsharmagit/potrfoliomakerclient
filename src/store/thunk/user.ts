@@ -16,18 +16,6 @@ export const getMe = (token: string) => async (dispatch: AppDispatch) => {
   }
 };
 
-export const checkRepoExist =
-  (repoName: string) => async (dispatch: AppDispatch) => {
-    try {
-      console.log(repoName, "repoName");
-      const user = await userService.checkRepoExist(repoName);
-      console.log(user);
-      dispatch(checkRepoExist(user));
-    } catch (error) {
-      //todo : handle this error
-    }
-  };
-
 export const createPortfolio =
   (dto: IcreatePortfolioDTO, image?: string, resume?: string) =>
   async (dispatch: AppDispatch) => {

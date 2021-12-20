@@ -37,7 +37,7 @@ const Navbar: React.FC<Props> = () => {
           >
             <li className="mx-4">
               <a
-                className="md:px-2 my-2 block hover:border rounded-full hover:bg-blue-500 hover:text-white text-xl"
+                className="px-5 py-2 block hover:border rounded-full hover:bg-blue-500 hover:text-white text-xl"
                 href="/"
               >
                 Home
@@ -45,7 +45,7 @@ const Navbar: React.FC<Props> = () => {
             </li>
             <li className="mx-4">
               <a
-                className="md:px-2 my-2 block hover:border rounded-full hover:bg-blue-500 hover:text-white text-xl"
+                className=" px-5 py-2 block hover:border rounded-full hover:bg-blue-500 hover:text-white text-xl"
                 href="/template"
               >
                 Create Portfolio
@@ -53,7 +53,23 @@ const Navbar: React.FC<Props> = () => {
             </li>
             <li className="mx-4">
               <a
-                className="md:px-2 cursor-pointer my-2 block hover:border rounded-full hover:bg-blue-500 hover:text-white text-xl text-purple-500"
+                className=" px-5 py-2 block hover:border rounded-full hover:bg-blue-500 hover:text-white text-xl"
+                href="/createdPortfolio"
+              >
+                Portfolio
+              </a>
+            </li>
+            <li className="mx-4">
+              <a
+                className=" px-5 py-2 block hover:border rounded-full hover:bg-blue-500 hover:text-white text-xl"
+                href="/about"
+              >
+                About
+              </a>
+            </li>
+            <li className="mx-4">
+              <a
+                className="px-5 py-2 cursor-pointer block hover:border rounded-full hover:bg-blue-500 hover:text-white text-xl text-purple-500"
                 onClick={() => logout()}
               >
                 Log out

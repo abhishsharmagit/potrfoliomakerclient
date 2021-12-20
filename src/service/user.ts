@@ -1,8 +1,9 @@
 import axios, { AxiosRequestConfig } from "axios";
 import { IcreatePortfolioDTO } from "../store/types";
 import cookie from "js-cookie";
+import { IUser } from "../types";
 
-const getMe = async (token: string) => {
+const getMe = async (token: string): Promise<IUser> => {
   const config: AxiosRequestConfig = {
     method: "GET",
     headers: {
@@ -24,21 +25,6 @@ const createPortfolio = async (dto: IcreatePortfolioDTO) => {
     data: dto,
   };
   const user = await axios(`${process.env.BACKEND_URL}/create`, config);
-  return user.data;
-};
-
-const checkRepoExist = async (repoName: string) => {
-  const token = getToken();
-console.log('service')
-  const config: AxiosRequestConfig = {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-    data: { repoName },
-  };
-  const user = await axios(`${process.env.BACKEND_URL}/repoExist`, config);
-  console.log(user,'user')
   return user.data;
 };
 
@@ -82,7 +68,7 @@ const uploadResume = async (dto?: FormData) => {
   }
 };
 
-const getToken = () => {
+const getToken = (): string | undefined => {
   return cookie.get("token");
 };
 
@@ -92,5 +78,4 @@ export default {
   uploadImage,
   uploadResume,
   getToken,
-  checkRepoExist,
 };

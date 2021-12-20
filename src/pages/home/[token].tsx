@@ -1,24 +1,19 @@
 import { useRouter } from "next/router";
 import cookie from "js-cookie";
 import { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "../../store";
-import { getMe } from "../../store/thunk/user";
 import Link from "next/link";
+import useAuth from "../../hooks";
 
 const Home = () => {
-  const dispatch = useAppDispatch();
-  const user = useAppSelector<any>(
-    (state) => Object.values(state.user.entities)[0]
-  );
-console.log(user,'user')
+  const { user, getUser } = useAuth();
+
   const router = useRouter();
-  const { token } = router.query;
-  //@ts-ignore
+
+  const token: string = router.query.token as string;
   cookie.set("token", token, { expires: 1 });
   useEffect(() => {
     if (!user) {
-      //@ts-ignore
-      dispatch(getMe(token));
+      getUser();
     }
   }, [user]);
 

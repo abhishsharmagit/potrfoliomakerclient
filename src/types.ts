@@ -12,3 +12,17 @@ export type FORM = {
   imageName: string;
   resumeName: string;
 };
+
+export type IPortfolio = {
+  id: string;
+  url: string;
+  repoName?: string;
+};
+export type IUser = {
+  id: string;
+  username: string;
+  githubId: string;
+};
+export interface ICheckRepoDTO {
+  repoName: string;
+}

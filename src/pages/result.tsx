@@ -1,9 +1,8 @@
-import Cookies from "js-cookie";
 import type { NextPage } from "next";
-import { useAppDispatch, useAppSelector } from "../store";
+import { useAppSelector } from "../store";
 
 const Result: NextPage = () => {
-  const user = useAppSelector<any>((state) => state.user.portfolioUrl);
+  const user: string = useAppSelector((state) => state.user.portfolioUrl);
 
   return (
     <>
