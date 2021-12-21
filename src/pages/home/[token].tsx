@@ -19,14 +19,22 @@ const Home = () => {
 
   return (
     <>
-      <p className="mx-auto items-center text-center text-6xl font-extrabold py-20">
-        Welcome {user?.username} u are logged in!
-      </p>
-      <Link href="/template">
-        <button className="mx-auto flex rounded-full items-center text-xl focus:outline-none outline-none border-none font-poppins border pl-8 pr-8 py-2 font-semibold bg-green-500">
-          Create Portfolio
-        </button>
-      </Link>
+      <div className="flex w-full mt-20 px-20">
+        <div className="flex w-1/3">
+          <img src="../images/homepageimg.jpg" />
+        </div>
+        <div className="flex flex-col w-2/3">
+          <p className="mx-auto items-center text-center text-4xl font-extrabold py-20 px-16">
+            Welcome {user?.username} u are logged in! Create Awesome portfolio
+            by just one click
+          </p>
+          <Link href="/template">
+            <button className="mx-auto hover:bg-red-400 flex rounded-full items-center text-xl focus:outline-none outline-none border-none font-poppins border px-8 py-2 font-semibold bg-green-500">
+              Create Portfolio
+            </button>
+          </Link>
+        </div>
+      </div>
     </>
   );
 };

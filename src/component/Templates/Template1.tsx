@@ -132,7 +132,7 @@ const Template1: React.FC<Props> = ({ value, image }) => {
               <div className={`${styles["container"]} ${styles["grid-2"]}`}>
                 <div className={`${styles["column-1"]}`}>
                   <h1 className={`${styles["header-title"]}`} id="name">
-                    {value?.firstName}
+                    {value ? value?.firstName : "John Doe"}
                   </h1>
                   <p className={`${styles["text"]}`} id="description">
                     {value?.description}

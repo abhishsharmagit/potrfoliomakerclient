@@ -49,22 +49,22 @@ const Template2: React.FC<Props> = ({ value, image }) => {
                   <ul className={`${styles["ul"]} `}>
                     <li className={`${styles["li"]} `}>
                       <a href="#" className={`${styles["a"]} `}>
-                        Features
+                        Home
                       </a>
                     </li>
                     <li className={`${styles["li"]} `}>
                       <a href="#" className={`${styles["a"]} `}>
-                        Pricing
+                        About
                       </a>
                     </li>
                     <li className={`${styles["li"]} `}>
                       <a href="#" className={`${styles["a"]} `}>
-                        Testimonials
+                        Project
                       </a>
                     </li>
                     <li className={`${styles["li"]} `}>
                       <a href="#" className={`${styles["btn"]} `}>
-                        Sign up
+                        Experience
                       </a>
                     </li>
                   </ul>
@@ -82,8 +82,8 @@ const Template2: React.FC<Props> = ({ value, image }) => {
               <div className={`${styles["container"]} `}>
                 <div className={`${styles["left"]} `}>
                   <div className={`${styles["big-title"]} `}>
-                    <h1>{value?.firstName}</h1>
-                    <h1>{value?.profile}</h1>
+                    <h1>{value ? value?.firstName : "John Doe"}</h1>
+                    <h1>{value ? value?.profile : "Developer"}</h1>
                   </div>
                   <p className={`${styles["text"]} `}>{value?.description}</p>
                   <div className={`${styles["cta"]} `}>

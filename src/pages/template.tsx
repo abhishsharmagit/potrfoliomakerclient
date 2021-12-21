@@ -1,10 +1,11 @@
+import { NextPage } from "next";
 import router from "next/router";
 import React, { useState } from "react";
 import Card from "../component/Card";
 import Template1 from "../component/Templates/Template1";
 import Template2 from "../component/Templates/Template2";
 
-const template = () => {
+const template: NextPage = () => {
   const [preview, setPreview] = useState<boolean>(false);
   const [template, setTemplate] = useState<string>("");
 
