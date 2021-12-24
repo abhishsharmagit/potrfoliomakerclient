@@ -1,8 +1,8 @@
 import axios, { AxiosRequestConfig } from "axios";
 import cookie from "js-cookie";
-import { ICheckRepoDTO, IPortfolio } from "../types";
+import { ICheckRepoDTO, IUserPortfolio } from "../types";
 
-const getPortfolioById = async (id: string): Promise<IPortfolio[]> => {
+const getPortfolioById = async (id: string): Promise<IUserPortfolio[]> => {
   const config: AxiosRequestConfig = {
     method: "POST",
     headers: {

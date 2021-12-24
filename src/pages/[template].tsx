@@ -3,7 +3,7 @@ import Router, { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../store";
 import { FORM } from "../types";
-import { EntityLoadingState } from "../store/types";
+import { EntityLoadingState, IcreatePortfolioDTO } from "../store/types";
 import Template1 from "../component/Templates/Template1";
 import Template2 from "../component/Templates/Template2";
 import { createPortfolio } from "../store/thunk/user";
@@ -18,14 +18,14 @@ const Form: NextPage = () => {
   const [resume, setResume] = useState<any>();
   const [formValue, setFormValue] = useState<FORM>({
     firstName: "",
-    portfolio: "",
+    portfolioName: "",
     profile: "developer",
     email: "",
     description: "",
     about: "",
     inTouch: "",
     address: "",
-    phone: "",
+    phone: undefined,
     template: "",
     imageName: "",
     resumeName: "",
@@ -53,9 +53,9 @@ const Form: NextPage = () => {
   }, [portfolioUrl]);
 
   useEffect(() => {
-    console.log(formValue.portfolio);
-    dispatch(checkRepoExist(formValue.portfolio));
-  }, [formValue.portfolio]);
+    console.log(formValue.portfolioName);
+    dispatch(checkRepoExist(formValue.portfolioName));
+  }, [formValue.portfolioName]);
 
   return (
     <>
@@ -63,16 +63,16 @@ const Form: NextPage = () => {
         <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 py-10">
           <div
             className="
-          flex flex-col
-          bg-white
-          shadow-md
-          px-4
-          sm:px-6
-          md:px-8
-          lg:px-10
-          py-8
-          rounded-3xl
-          max-w-3xl
+                  flex flex-col
+                  bg-white
+                  shadow-md
+                  px-4
+                  sm:px-6
+                  md:px-8
+                  lg:px-10
+                  py-8
+                  rounded-3xl
+                  max-w-3xl
         "
           >
             <div className="font-medium self-center text-xl sm:text-3xl text-gray-800">
@@ -93,24 +93,24 @@ const Form: NextPage = () => {
                   <div className="flex flex-col">
                     <Input
                       required={true}
-                      value={formValue.portfolio}
+                      value={formValue.portfolioName}
                       type="text"
                       label="Potfolio Name"
                       name="portfolioName"
                       placeholder="Your Portfolio Repo Name.."
                       onChange={(value) => {
-                        handleFieldChange(value, "portfolio");
+                        handleFieldChange(value, "portfolioName");
                       }}
                     />
                     {repoExist ? (
                       <span className="text-red-500">
-                        Portfolio {formValue.portfolio} is already exist! you
-                        can update it
+                        Portfolio {formValue.portfolioName} is already exist!
+                        you can update it
                       </span>
                     ) : (
                       <span className="text-green-500">
-                        {formValue.portfolio &&
-                          `Portfolio name ${formValue.portfolio} is available`}
+                        {formValue.portfolioName &&
+                          `Portfolio name ${formValue.portfolioName} is available`}
                       </span>
                     )}
                   </div>
@@ -145,7 +145,7 @@ const Form: NextPage = () => {
                     onChange={(value) => handleFieldChange(value, "email")}
                   />
                   <Input
-                    type="text"
+                    type="number"
                     label="phone"
                     value={formValue.phone}
                     name="phone"
@@ -292,7 +292,7 @@ const Form: NextPage = () => {
                   <button
                     type="submit"
                     onClick={() => {
-                      if (formValue.firstName && formValue.portfolio) {
+                      if (formValue.firstName && formValue.portfolioName) {
                         setPreview(!preview);
                         setErrorMsg("");
                       } else {

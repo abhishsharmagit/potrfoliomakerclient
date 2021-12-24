@@ -1,4 +1,4 @@
-import { IPortfolio, IUser } from "../types";
+import { IUser, IUserPortfolio } from "../types";
 
 export type UsersState = {
   entities: {};
@@ -6,7 +6,7 @@ export type UsersState = {
   loading: EntityLoadingState;
 };
 export type PortfolioState = {
-  portfolio: IPortfolio[];
+  portfolio: IUserPortfolio[];
   loading: EntityLoadingState;
   error?: string;
   repoExist: boolean;
@@ -21,9 +21,9 @@ export interface IcreatePortfolioDTO {
   about: string;
   address: string;
   description: string;
-  phone: string;
+  phone: number | undefined;
   firstName: string;
-  portfolio: string;
+  portfolioName: string;
   profile?: string;
   inTouch: string;
   email: string;

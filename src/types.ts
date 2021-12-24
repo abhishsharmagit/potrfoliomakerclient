@@ -1,23 +1,33 @@
 export type FORM = {
   firstName: string;
-  portfolio: string;
+  portfolioName: string;
   profile: string;
   email: string;
   description: string;
   about: string;
   inTouch: string;
   address: string;
-  phone: string;
+  phone: number | undefined;
   template: string;
   imageName: string;
   resumeName: string;
 };
 
-export type IPortfolio = {
-  id: string;
-  url: string;
-  repoName?: string;
-};
+export interface IUserPortfolio {
+  about: string;
+  address: string;
+  description: string;
+  phone?: number;
+  firstName: string;
+  portfolioName: string;
+  profile: string;
+  inTouch: string;
+  email: string;
+  template: string;
+  userId: string;
+  url?: string;
+}
+
 export type IUser = {
   id: string;
   username: string;

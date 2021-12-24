@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from "../store";
 import { getPortfolioById } from "../store/thunk/portfolio";
 import { getMe } from "../store/thunk/user";
 import cookie from "js-cookie";
-import { IPortfolio } from "../types";
+import { IUserPortfolio } from "../types";
 
 type TableHead = {
   id: string;
@@ -22,7 +22,7 @@ const createdPortfolio: NextPage = () => {
   const user = useAppSelector<any>(
     (state) => Object.values(state.user.entities)[0]
   );
-  const portfolios: IPortfolio[] = useAppSelector(
+  const portfolios: IUserPortfolio[] = useAppSelector(
     (state) => state.portfolio.portfolio
   );
   useEffect(() => {
@@ -43,7 +43,7 @@ const createdPortfolio: NextPage = () => {
   const tableBody: TableBody[] = [...portfolios].reverse().map((data, id) => {
     return {
       id: id + 1,
-      portfolioName: data.repoName,
+      portfolioName: data.portfolioName,
       portfolioLink: (
         <a
           className="rounded-xl bg-blue-300 px-3 py-2"
