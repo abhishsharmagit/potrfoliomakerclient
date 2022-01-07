@@ -5,6 +5,8 @@ import { getPortfolioById } from "../store/thunk/portfolio";
 import { getMe } from "../store/thunk/user";
 import cookie from "js-cookie";
 import { IUserPortfolio } from "../types";
+import Link from "next/link";
+import { url } from "inspector";
 
 type TableHead = {
   id: string;
@@ -15,6 +17,7 @@ type TableBody = {
   id: string | number;
   portfolioName: string | undefined;
   portfolioLink: JSX.Element;
+  update: JSX.Element;
 };
 
 const createdPortfolio: NextPage = () => {
@@ -52,6 +55,11 @@ const createdPortfolio: NextPage = () => {
         >
           Open Portfolio
         </a>
+      ),
+      update: (
+        <Link href={`${data.template}?portfolioName=${data.portfolioName}`}>
+          <a className="rounded-xl bg-blue-300 px-3 py-2">Update</a>
+        </Link>
       ),
     };
   });

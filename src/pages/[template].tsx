@@ -2,13 +2,14 @@ import type { NextPage } from "next";
 import Router, { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../store";
-import { FORM } from "../types";
-import { EntityLoadingState, IcreatePortfolioDTO } from "../store/types";
+import { FORM, IUserPortfolio } from "../types";
+import { EntityLoadingState } from "../store/types";
 import Template1 from "../component/Templates/Template1";
 import Template2 from "../component/Templates/Template2";
 import { createPortfolio } from "../store/thunk/user";
 import Input from "../component/Input";
 import { checkRepoExist } from "../store/thunk/portfolio";
+import portfolio from "../service/portfolio";
 
 const Form: NextPage = () => {
   const dispatch = useAppDispatch();
@@ -33,6 +34,9 @@ const Form: NextPage = () => {
   const portfolioUrl: string = useAppSelector(
     (state) => state.user.portfolioUrl
   );
+  const portfolios: IUserPortfolio[] = useAppSelector(
+    (state) => state.portfolio.portfolio
+  );
   const usersState = useAppSelector<any>((state) => state.user.loading);
   const repoExist: boolean = useAppSelector(
     (state) => state.portfolio.repoExist
@@ -45,12 +49,37 @@ const Form: NextPage = () => {
     dispatch(createPortfolio(formValue, image, resume));
   };
   const router = useRouter();
+  const { template, portfolioName }: any = router.query;
 
   useEffect(() => {
-    const template = router.query.template as string;
+    console.log(portfolioName, "portfolioName");
+
     handleFieldChange(template, "template");
     portfolioUrl && Router.push("/result");
   }, [portfolioUrl]);
+
+  useEffect(() => {
+    const data =
+      portfolioName &&
+      portfolios.find((data: IUserPortfolio) => {
+        return data.portfolioName === portfolioName;
+      });
+    data &&
+      setFormValue({
+        firstName: data?.firstName || "",
+        portfolioName: data?.portfolioName || "",
+        profile: data?.profile || "",
+        email: data?.email || "",
+        description: data?.description || "",
+        about: data?.about || "",
+        inTouch: data?.inTouch || "",
+        address: data?.address || "",
+        phone: data?.phone || undefined,
+        template: data?.template || "",
+        imageName: "",
+        resumeName: "",
+      });
+  }, []);
 
   useEffect(() => {
     console.log(formValue.portfolioName);

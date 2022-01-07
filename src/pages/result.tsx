@@ -6,7 +6,7 @@ const Result: NextPage = () => {
 
   return (
     <>
-      <p className="mx-auto text-3xl items-center text-center text-white py-10">
+      <p className="mx-auto text-3xl items-center text-center text-black py-10">
         Here is your portfolio Link
         <span className="text-xl">
           (if link is not working, open link in another browser window or

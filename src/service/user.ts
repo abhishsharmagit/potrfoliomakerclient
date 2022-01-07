@@ -24,6 +24,7 @@ const createPortfolio = async (dto: IcreatePortfolioDTO) => {
     },
     data: dto,
   };
+  console.log(dto,"dto")
   const user = await axios(`${process.env.BACKEND_URL}/create`, config);
   return user.data;
 };
